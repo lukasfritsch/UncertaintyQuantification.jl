@@ -154,3 +154,11 @@ function formatinputs(row::DataFrameRow, formats::Dict{Symbol,String})
     end
     return (; zip(names, values)...)
 end
+
+function formatinput(data::Real, formatstring::String)
+    return fmt(formatstring, data)
+end
+
+function formatinput(data::AbstractVector{<:Real}, formatstring::String)
+    return fmt.(formatstring, data)
+end
